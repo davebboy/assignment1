@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  21 SEP 2018 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  21 SEP 2018 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,8 +164,26 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count105
 \FV@StepNumber=\count106
 \FV@OutFile=\write3
+) (./text.aux
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
 )
-No file text.aux.
 \openout1 = `text.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -180,7 +198,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen121
@@ -258,30 +276,68 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--23
 
  []
 
+<figures/Franke.png, id=1, 1445.4pt x 722.7pt>
+File: figures/Franke.png Graphic file (type png)
+ <use figures/Franke.png>
+Package pdftex.def Info: figures/Franke.png used on input line 27.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+
 [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./text.aux)
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
+es/Franke.png>] <figures/olsFranke.png, id=13, 1445.4pt x 722.7pt>
+File: figures/olsFranke.png Graphic file (type png)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<use figures/olsFranke.png>
+Package pdftex.def Info: figures/olsFranke.png used on input line 51.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+ [2 <./figures/olsFranke.png>]
+<figures/RidgeFranke.png, id=19, 1445.4pt x 722.7pt>
+File: figures/RidgeFranke.png Graphic file (type png)
+
+<use figures/RidgeFranke.png>
+Package pdftex.def Info: figures/RidgeFranke.png used on input line 109.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+ [3]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 134.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 150.
+
+<figures/LassoFranke.png, id=25, 1445.4pt x 722.7pt>
+File: figures/LassoFranke.png Graphic file (type png)
+
+<use figures/LassoFranke.png>
+Package pdftex.def Info: figures/LassoFranke.png used on input line 168.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+ [4 <./figures/RidgeFranke.png>] [5 <./figures/LassoFranke.png>] [6] (./text.au
+x)
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3870 strings out of 493089
- 57431 string characters out of 6134843
- 118438 words of memory out of 5000000
- 7317 multiletter control sequences out of 15000+600000
- 9489 words of font info for 36 fonts, out of 8000000 for 9000
+ 3917 strings out of 493089
+ 58242 string characters out of 6134843
+ 122523 words of memory out of 5000000
+ 7355 multiletter control sequences out of 15000+600000
+ 11352 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,40p,262b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on text.pdf (1 page, 53180 bytes).
+ 42i,9n,40p,262b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on text.pdf (6 pages, 427814 bytes).
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
- 16 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
