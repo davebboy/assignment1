@@ -21,6 +21,7 @@ dfgagf\\
 \\
 faf
 \section{Results}
+
 \subsection{Franke}
 \begin{figure}[H]
 \centering
@@ -28,8 +29,9 @@ faf
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:Franke}
 \end{figure}
+
 \subsubsection{OLS}
-efsdfs
+Table \ref{tab:olsFranke} shows the results obtained using classical OLS method. We see that as the order of the polynomial fit increases the value of  the mean squared error (MSE) decreases, this means that using higher order polynomials is much more accurate. 
 
 \begin{table}[H]
 \centering
@@ -43,19 +45,20 @@ efsdfs
 \end{tabular}%
 %}
 \caption{My caption}
-\label{my-label}
+\label{tab:olsFranke}
 \end{table}
-
+Similarly, there is an increase in the value R-square as the order of polynomial increases. In the case of polynomial fit order $5$, $R^{2}$ is $0.97$, meaning, $97\%$ of variance in $z$ is explained by the predictors. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{figures/olsFranke.png}
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:olsFranke}
 \end{figure}
-Bias for the final model is: 24.627991661784236
-Var for the final model is: 6.718071568281006e-07
-\subsubsection{Ridge}
+Whenever we discuss model prediction, it is important to understand prediction errors (bias and variance). Bias for the final model is: $4.95$ and Variance is: $6.71e-07$. We conclude that our model is underfit neither overfit, since the error of our model is relatively low.
 
+
+\subsubsection{Ridge}
+As mentioned above our model is not overfit, therefore it is not surprising that the best result is obtained using low value of the tuning parameter $\lambda$. In Tables \ref{tab:ridge3}, \ref{tab:ridge4} and \ref{tab:ridge5} we see that as the value of $\lambda$ decreases the value of MSE decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.
 \begin{table}[H]
 \centering
 \begin{tabular}{lll}
@@ -69,7 +72,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0235 & 0.71          \\ \hline
 \end{tabular}
 \caption{order3}
-\label{my-label}
+\label{tab:ridge3}
 \end{table}
 
 \begin{table}[H]
@@ -85,7 +88,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0223 & 0.73          \\ \hline
 \end{tabular}
 \caption{order 4}
-\label{my-label}
+\label{tab:ridge4}
 \end{table}
 
 \begin{table}[H]
@@ -101,7 +104,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0213 & 0.74          \\ \hline
 \end{tabular}
 \caption{order 5}
-\label{my-label}
+\label{tab:ridge5}
 \end{table}
 
 \begin{figure}[H]
@@ -110,10 +113,12 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:RidgeFranke}
 \end{figure}
+Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $5.18$ and Variance: $4.79e-07$
 
-Bias for the final model is: 26.93124204070874
-Var for the final model is: 4.790683011567965e-07
+
 \subsubsection{Lasso}
+Tables \ref{tab:LassoFranke3}, \ref{tab:LassoFranke4} and \ref{tab:LassoFranke5} illustrate the results for Ridge regression using different values of $\alpha$ and orders of polynomials. It is worth mentioning that for some values of $\alpha$ the coefficient of determination $R^{2}$ is negative. The reason is that by increasing $\lambda$ we reduce the magnitude of the coefficients. The higher the values of alpha is , the bigger is the penalty and therefore the magnitude of coefficients are reduced more. However, we also know that our OLS model is not overfit, which means that all predictors in our model are important and by reducing the magnitude of their coefficients we get worse predictions. 
+
 
 \begin{table}[H]
 \centering
@@ -128,7 +133,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0830 & -0.0011       \\ \hline
 \end{tabular}
 \caption{3}
-\label{my-label}
+\label{tab:LassoFranke3}
 \end{table}
 
 \begin{table}[]
@@ -144,7 +149,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0830 & -0.0011       \\ \hline
 \end{tabular}
 \caption{4}
-\label{my-label}
+\label{tab:LassoFranke4}
 \end{table}
 
 \begin{table}[]
@@ -160,7 +165,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 100       & 0.0830 & -0.0011       \\ \hline
 \end{tabular}
 \caption{5}
-\label{my-label}
+\label{tab:LassoFranke5}
 \end{table}
 
 \begin{figure}[H]
@@ -170,8 +175,8 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \label{fig:LassoFranke}
 \end{figure}
 
-Bias for the final model is: 134.818068147102
-Var for the final model is: 1.0388557141474813e-06
+Bias for the best Lasso model is $13.56$ and Variance is $1.04e-06$. We can see that, both values for the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
+
 \begin{thebibliography}{111}
 \raggedright
 \bibitem{abc} EIBEN, Agoston E., et al. Introduction to evolutionary computing. Berlin: springer, 2003.
