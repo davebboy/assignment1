@@ -9,6 +9,7 @@
 \usepackage{fancyvrb}
 
 
+
 \title{INF4490 Mandatory Assignment 1: \\ Travelling Salesman Problem}
 \author{Minh Chien Nguyen (davidngcz@gmail.com)}
 
@@ -20,9 +21,108 @@
 dfgagf\\
 \\
 faf
-\section{Results}
+\section{Mathematical tools}
+\label{sec:techniques}
+This section provides an overview of basic regression methods. Preliminary knowledge of statistic is expected. There are many excellent textbooks (see e. g. \cite{abc} and \cite{abc}) which cover these topics. Here, however, the subtle mathematical issues are not addressed and we will present the main tools and results without details, but it will suffice for immediate application to fitting functions.\\
 
-\subsection{Franke}
+\subsection{Linear regression}
+Linear regression is the most widely used statistical technique for predictive modeling, since it is very simple and often provides an good description of how the inputs affect the output.\\
+Let $(x_{1},y_{1}),\ldots,(x_{N},y_{N})$ to be observed data, where each $x_{i} = (x_{i1},x_{i2},\ldots,x_{i p})$ is a vector obtained from the $i\text{th}$ measurement. The set of variables $(x_{1},\ldots,x_{N})$ is called the independent variable or the predictor variable while the set of variable $y=(y_{1},\ldots,y_{N})$is called the dependent or the response variable. \\
+The goal of the regression analysis is to extract/exploit relationship between $y_i$ and $x_i$. The linear regression model assumes that there exists $\beta=(\beta_{0},\beta_{1},\ldots,\beta_{p})^{T}$ satisfying 
+\begin{equation}
+y_{i}=f(x_{i})=\beta_{0} + \sum_{j=1}^{p}x_{ij}\beta_{j}.
+\end{equation}
+The method of least squares suggest that the coefficients $\beta$ should minimize the residual sum of squares
+\begin{equation}
+\hat{\beta}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}).
+\label{eq:ols}
+\end{equation}
+The unique solution to equation \eqref{eq:ols} is given by \cite{def}
+\begin{equation}
+\hat{\beta} =\left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y}.
+\end{equation}
+
+\subsection{Regularization}
+One of the most common method to overcome overfitting is regularization. The main concept behind this approach is simplifying the model as much as possible. In other words, we reduce the magnitude of the coefficients of inputs in our model. In the following part, we present two different types of regression techniques using regularization.
+
+\subsubsection*{Ridge Regression}
+The first techniques is called ridge regression and its coefficients are defined by 
+\begin{equation}
+\hat{\beta}^{\text{ridge}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} \beta_{j}^{2}).
+\label{eq:ridge}
+\end{equation}
+In equation \eqref{eq:ridge} we added an extra term, which is known as the penalty term. $\lambda \geq 0$ is called tuning parameter. It easy to see that higher the value of $\alpha$, higher is the term 
+\begin{equation*}
+\sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} \beta_{j}^{2}
+\end{equation*}
+therefore the magnitude of coefficients $\beta$ are reduced. Roughly speaking, we punish the cost function for high values of $\beta$. It is important to note that the parameter $\lambda$ can be learned as well, using a method called cross validation that will be discussed in section \ref{sec_kcross}.
+The ridge regression solution is given by
+\begin{equation}
+\hat{\beta} =\left(\hat{X}^T\hat{X} + \lambda I \right)^{-1}\hat{X}^T\hat{y},
+\end{equation}
+where $I$ is the $p \times p$ identity matrix.
+\subsubsection*{Lasso Regression}
+Lasso is similar to ridge, but with a small twist. The lasso estimate is in the form
+\begin{equation}
+\hat{\beta}^{\text{lasso}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} |\beta_{j}|).
+\label{eq:lasso}
+\end{equation}
+An important note to notice in equation \eqref{eq:lasso} is that the only difference from ridge regression is term $\lambda \sum_{j=1}^{p} |\beta_{j}|$. Here, the method might include fewer predictors in the model, since lasso sets the irrelevant coefficient $\beta$ to zero.
+\subsection{K-folds cross-variation}
+\label{sec_kcross}
+K-folds cross-variation is a very useful technique for calculating the performance of prediction models. The general procedure can be described as follows:
+\begin{enumerate}
+\item Shuffle the dataset randomly.
+\item Divide the dataset into k groups.
+\item For each group:
+\begin{enumerate}
+\item Take the group as a test data set.
+\item Take the remaining groups as a training data set.
+\item Fit a model on the training set and evaluate it on the test set.
+\item Calculate the evaluation score.
+\end{enumerate}
+\item Estimate the accuracy of the model by averaging the evaluation score derived in all the $k$ cases.
+\end{enumerate}
+\subsection{Performance criteria}
+To test the performance of our results, we list the relevant criteria that we use throughout this section. In the next part, we will denote $\tilde{\hat{y}}_i$  the predicted value of the $i-th$ sample and $y_i$ is the corresponding true value.\\
+\begin{enumerate}
+\item Mean squared error (MSE) - measures the average of the squares of the errors, which is defined as
+\begin{equation}
+MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
+\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2,
+\end{equation}
+it is clear that the smaller the value of MSE, the better the fit.
+\item Coefficient of determination $R^{2}$ - is a number that indicates the proportion of the variance in the dependent variable that is predictable from the independent variable. The $R^2$ is defined as
+\begin{equation}
+R^2(\hat{y}, \tilde{\hat{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
+\end{equation}
+where the mean value  of $\hat{y}$ is defined as $\bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i$.
+\item Bias - is the difference between the expected prediction of our model and the correct value which we want to predict. Bias is defined as
+\begin{equation}
+Bias^2= \sum_i (f(\boldsymbol{x}_i)-E_\mathcal{L}[\hat{g}_\mathcal{L}(\boldsymbol{x}_i)])^2,
+\end{equation}
+where $E_{\mathcal{L}}$ denotes the expected value of the functional over the dataset $\mathcal{L}=\{\mathcal{L}_1,
+\mathcal{L}_2, \ldots \}$.
+\item Variance - is an error from sensitivity to small fluctuation in the training set.
+\begin{equation}
+Var=\sum_i E[( \hat{g}(\boldsymbol{x}_i)-E[\hat{g}(\boldsymbol{x}_i)])^2],
+\end{equation}
+Models with high variance usually perform very well on training data but have high error on test data.
+\end{enumerate}
+\section{Testing on simulated and real data}
+After the theoretical considerations of the previous sections, we now want to test the performance of the presented techniques. First, we study how to fit polynomials to a Franke's function. Then we apply the methods on the polynomial approximation of digital terrain data.
+\subsection{Franke's function}
+In this section we perform a regression analysis of a specific two-dimensional function called Franke's
+function which is defined for $x,y\in [0,1]$ as
+
+\begin{align}
+f(x,y) &= \frac{3}{4}\exp{\left(-\frac{(9x-2)^2}{4} - \frac{(9y-2)^2}{4}\right)}+\frac{3}{4}\exp{\left(-\frac{(9x+1)^2}{49}- \frac{(9y+1)}{10}\right)} \\
+&+\frac{1}{2}\exp{\left(-\frac{(9x-7)^2}{4} - \frac{(9y-3)^2}{4}\right)} -\frac{1}{5}\exp{\left(-(9x-4)^2 - (9y-7)^2\right) }.
+\label{eq:franke}
+\end{align}
+
+Figure \ref{fig:Franke} shows a three-dimensional plot of the Franke's function with an added stochastic noise to it using  the normal distribution $N(0,1)$. From equation \eqref{eq:franke} we know that the Franke's function is a weighted sum of four exponentials and it is clearly an infinitely differentiable function on $[0,1] \times [0,1]$. Therefore, to perform an regression analysis of this function, we will test
+polynomial fits in $x$ and $y$ up to fifth order.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{figures/Franke.png}
@@ -31,7 +131,35 @@ faf
 \end{figure}
 
 \subsubsection{OLS}
-Table \ref{tab:olsFranke} shows the results obtained using classical OLS method. We see that as the order of the polynomial fit increases the value of  the mean squared error (MSE) decreases, this means that using higher order polynomials is much more accurate. 
+In this part we perform an OLS regression analysis of the Franke's function. First, we generate the arrays of values for $x$ and $y$ with a step size $h=0.01$. Then, we evaluate the Franke's function adding stochastic noise $N(0,1)$. Next, we split our data set into a training set and a test set, where the training set contains $70\%$ of the original data set. Finally, we fit a OLS polynomial regression model order $3$ on the training set and evaluate it on the test set. \\
+The estimation of coefficients $\beta$ and their confident intervals are shown in Table \ref{tab:olsfrane1}. The value of MSE is $0.0080$, meaning that the estimators of our model predicts observations with relatively high accuracy. The value of the coefficient of determination $R^{2}$ is $0.9015$ saying that the regression predictions approximate the real data points very well.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\hline
+$\beta$ & Confident interval \\ \hline
+0.959   & (0.958, 0.961)     \\
+-0.380  & (-0.387 ,-0.373)   \\
+1.441   & (1.434, 1.448)     \\
+-1.807  & (-1.820,  -1.794)  \\
+-6.742  & (-6.755, -6.729)   \\
+1.865   & (1.855, 1.876)     \\
+1.121   & (1.113, 1.129)     \\
+4.737   & (4.729, 4.745)     \\
+0.461   & (0.453, 0.468)     \\
+-1.445  & (-1.452, -1.437)   \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{tab:olsfrane1}
+\end{table}
+Now, we perform a resampling of the data for the OLS regression analysis least square regression analysis using polynomials in $x$ and $y$ up to fifth order. The process is set up as follows
+\begin{enumerate}
+\item Generate the arrays of values for $x$ and $y$ with a step size $h=0.01$. 
+\item Evaluate the Franke's function with an added stochastic noise to it using  the normal distribution $N(0,1)$.
+\item Perform resampling of the data using k-fold Cross-Validation
+\item Fit the OLS regression model for each fold and each order of polynomials.
+\end{enumerate}
+Table \ref{tab:olsFranke} shows the results obtained using classical OLS method with resampling. We see that as the order of the polynomial fit increases the value of  the mean squared error (MSE) decreases, this means that using higher order polynomials is much more accurate. 
 
 \begin{table}[H]
 \centering
@@ -54,11 +182,12 @@ Similarly, there is an increase in the value R-square as the order of polynomial
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:olsFranke}
 \end{figure}
-Whenever we discuss model prediction, it is important to understand prediction errors (bias and variance). Bias for the final model is: $4.95$ and Variance is: $6.71e-07$. We conclude that our model is underfit neither overfit, since the error of our model is relatively low.
+Whenever we discuss model prediction, it is important to understand prediction errors (bias and variance). Bias for the final model is: $0.00245$ and Variance is: $5.48e-07$. We conclude that our model is underfit neither overfit, since the error of our model is relatively low.
 
 
-\subsubsection{Ridge}
-As mentioned above our model is not overfit, therefore it is not surprising that the best result is obtained using low value of the tuning parameter $\lambda$. In Tables \ref{tab:ridge3}, \ref{tab:ridge4} and \ref{tab:ridge5} we see that as the value of $\lambda$ decreases the value of MSE decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.
+\subsubsection{Rigde regression on the Franke function  with resampling}
+In this part, we perform the same analysis as in the previous section for the Ridge regression with different values of $\lambda$ but now only with resampling.\\
+As mentioned above our model is not overfit, therefore it is not surprising that the best result is obtained using low value of the tuning parameter $\lambda$. In Tables \ref{tab:ridge3}, \ref{tab:ridge4} and \ref{tab:ridge5} we see that as the value of $\lambda$ decreases the value of MSE for the Ridge regression model with resampling decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.
 \begin{table}[H]
 \centering
 \begin{tabular}{lll}
@@ -113,11 +242,12 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:RidgeFranke}
 \end{figure}
-Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $5.18$ and Variance: $4.79e-07$
+Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $0.00268$ and Variance: $4.45e-07$
 
 
-\subsubsection{Lasso}
-Tables \ref{tab:LassoFranke3}, \ref{tab:LassoFranke4} and \ref{tab:LassoFranke5} illustrate the results for Ridge regression using different values of $\alpha$ and orders of polynomials. It is worth mentioning that for some values of $\alpha$ the coefficient of determination $R^{2}$ is negative. The reason is that by increasing $\lambda$ we reduce the magnitude of the coefficients. The higher the values of alpha is , the bigger is the penalty and therefore the magnitude of coefficients are reduced more. However, we also know that our OLS model is not overfit, which means that all predictors in our model are important and by reducing the magnitude of their coefficients we get worse predictions. 
+\subsubsection{Lasso regression on the Franke function  with resampling}
+ 
+This part is essentially a repeat of the previous two ones, but now with Lasso regression with resampling. Tables \ref{tab:LassoFranke3}, \ref{tab:LassoFranke4} and \ref{tab:LassoFranke5} illustrate the results for Ridge regression using different values of $\alpha$ and orders of polynomials. It is worth mentioning that for some values of $\alpha$ the coefficient of determination $R^{2}$ is negative. The reason is that by increasing $\lambda$ we reduce the magnitude of the coefficients. The higher the values of alpha is , the bigger is the penalty and therefore the magnitude of coefficients are reduced more. However, we also know that our OLS model is not overfit, which means that all predictors in our model are important and by reducing the magnitude of their coefficients we get worse predictions. 
 
 
 \begin{table}[H]
@@ -175,8 +305,13 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \label{fig:LassoFranke}
 \end{figure}
 
-Bias for the best Lasso model is $13.56$ and Variance is $1.04e-06$. We can see that, both values for the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
+Bias for the best Lasso model is $0.01349$ and Variance is $3.966e-07$. We can see that, the value for the bias of the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
 
+\subsection{Real data}
+To illustrate the techniques described in Section \ref{sec:techniques}, we apply them to the digital terrain data from the website: https://earthexplorer.usgs.gov/.
+\subsubsection{OLS real data}
+\subsubsection{Ridge real data}
+\subsubsection{Lasso real data}
 \begin{thebibliography}{111}
 \raggedright
 \bibitem{abc} EIBEN, Agoston E., et al. Introduction to evolutionary computing. Berlin: springer, 2003.

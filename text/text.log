@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  23 SEP 2018 12:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  25 SEP 2018 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,29 +164,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count105
 \FV@StepNumber=\count106
 \FV@OutFile=\write3
-) (./text.aux
-
-LaTeX Warning: Label `my-label' multiply defined.
-
-
-LaTeX Warning: Label `my-label' multiply defined.
-
-)
+) (./text.aux)
 \openout1 = `text.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
- (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen121
@@ -250,98 +244,114 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 20--23
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
 
-<figures/Franke.png, id=1, 1445.4pt x 722.7pt>
-File: figures/Franke.png Graphic file (type png)
- <use figures/Franke.png>
-Package pdftex.def Info: figures/Franke.png used on input line 28.
-(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+
+Overfull \hbox (15.21393pt too wide) in paragraph at lines 29--32
+\OT1/cmr/m/n/10.95 Let $(\OML/cmm/m/it/10.95 x[]; y[]\OT1/cmr/m/n/10.95 )\OML/c
+mm/m/it/10.95 ; [] ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]; y[]\OT1/cmr/m
+/n/10.95 )$ to be ob-served data, where each $\OML/cmm/m/it/10.95 x[] \OT1/cmr/
+m/n/10.95 = (\OML/cmm/m/it/10.95 x[]; x[]; [] ; x[]\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Overfull \hbox (13.414pt too wide) in paragraph at lines 29--32
+\OT1/cmr/m/n/10.95 is a vec-tor ob-tained from the $\OML/cmm/m/it/10.95 i[]$ \O
+T1/cmr/m/n/10.95 mea-sure-ment. The set of vari-ables $(\OML/cmm/m/it/10.95 x[]
+; [] ; x[]\OT1/cmr/m/n/10.95 )$
+ []
 
 [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
-es/Franke.png>] <figures/olsFranke.png, id=13, 1445.4pt x 722.7pt>
-File: figures/olsFranke.png Graphic file (type png)
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
-<use figures/olsFranke.png>
-Package pdftex.def Info: figures/olsFranke.png used on input line 53.
+ []
+
+[3]
+Overfull \hbox (11.76515pt too wide) in paragraph at lines 122--122
+[] 
+ []
+
+[4] <figures/Franke.png, id=27, 1445.4pt x 722.7pt>
+File: figures/Franke.png Graphic file (type png)
+ <use figures/Franke.png>
+Package pdftex.def Info: figures/Franke.png used on input line 128.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
- [2 <./figures/olsFranke.png>]
-<figures/RidgeFranke.png, id=22, 1445.4pt x 722.7pt>
+
+[5 <./figures/Franke.png>] [6]
+<figures/olsFranke.png, id=36, 1445.4pt x 722.7pt>
+File: figures/olsFranke.png Graphic file (type png)
+ <use figures/olsFranke.png>
+Package pdftex.def Info: figures/olsFranke.png used on input line 181.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+
+[7 <./figures/olsFranke.png>]
+<figures/RidgeFranke.png, id=42, 1445.4pt x 722.7pt>
 File: figures/RidgeFranke.png Graphic file (type png)
 
 <use figures/RidgeFranke.png>
-Package pdftex.def Info: figures/RidgeFranke.png used on input line 112.
+Package pdftex.def Info: figures/RidgeFranke.png used on input line 241.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
- [3]
-
-LaTeX Warning: Reference `tab:LassoFranke3' on page 4 undefined on input line 1
-20.
-
-
-LaTeX Warning: Reference `tab:LassoFranke4' on page 4 undefined on input line 1
-20.
-
-
-LaTeX Warning: Reference `tab:LassoFranke5' on page 4 undefined on input line 1
-20.
-
-[4 <./figures/RidgeFranke.png>]
+ [8] [9 <./figures/RidgeFranke.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 139.
+               Default added (so using `tbp') on input line 269.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 155.
+               Default added (so using `tbp') on input line 285.
 
-<figures/LassoFranke.png, id=30, 1445.4pt x 722.7pt>
+<figures/LassoFranke.png, id=50, 1445.4pt x 722.7pt>
 File: figures/LassoFranke.png Graphic file (type png)
 
 <use figures/LassoFranke.png>
-Package pdftex.def Info: figures/LassoFranke.png used on input line 173.
+Package pdftex.def Info: figures/LassoFranke.png used on input line 303.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
- [5] [6 <./figures/LassoFranke.png>] (./text.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+ [10] [11 <./figures/LassoFranke.png>] (./text.aux) ) 
 Here is how much of TeX's memory you used:
- 3924 strings out of 493089
- 58347 string characters out of 6134843
- 122555 words of memory out of 5000000
- 7362 multiletter control sequences out of 15000+600000
- 11352 words of font info for 43 fonts, out of 8000000 for 9000
+ 3946 strings out of 493089
+ 58587 string characters out of 6134843
+ 124595 words of memory out of 5000000
+ 7376 multiletter control sequences out of 15000+600000
+ 13814 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,10n,40p,732b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on text.pdf (6 pages, 440568 bytes).
+ 42i,10n,40p,839b,271s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on text.pdf (11 pages, 500610 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

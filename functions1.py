@@ -18,23 +18,25 @@ def FrankeFunction(x,y):
 
 def MSE(y, yh):
      return np.square(y - yh).mean()
+    
 def r2score(y,yh):    
     return (1 - np.sum(np.square(y-yh))/np.sum(np.square(y- np.mean(yh))))
-def cofidentint(XXinv,y,yh,beta):
-    
+
+def cofidentint(XXinv,y,yh,beta):    
     N=np.size(y,0)
 
     p=np.size(XXinv,0)
 
     confInt=np.zeros((p,2))
     sigma2=np.sum(np.square(y-yh))/(N-p-1)
-
+    #95% CI
     for i in range(p):
         confInt[i,0]=beta[i]-1.645*np.sqrt(abs(XXinv[i,i]))*sigma2
         confInt[i,1]=beta[i]+1.645*np.sqrt(abs(XXinv[i,i]))*sigma2
     return confInt
+
 def constructX(xVector,yVector,polyOrder):
-    
+    ##contruct x_hat matrix for regression model
     vectorSize=np.size(yVector,0)
     if polyOrder==3:       
         xMatrix = np.c_[np.ones((vectorSize,1)), xVector, yVector,xVector**2,yVector**2,xVector*yVector,
@@ -61,17 +63,15 @@ def constructX(xVector,yVector,polyOrder):
                        (xVector**2)*(yVector**3),xVector*(yVector**4)]
 
     return xMatrix    
+
 def OSLregression(xVector,yVector,zVector,polyOrder):
     
     vectorSize=np.size(yVector,0)
-    #transform back to a matrix
+    
     xMatrix=constructX(xVector,yVector,polyOrder)
     #pseudo inversion using SVD   
     XXinv=np.linalg.pinv(xMatrix.T.dot(xMatrix))
-    beta = XXinv.dot(xMatrix.T).dot(zVector)
-    #print(beta)
-    #zPredict=xMatrix.dot(beta)
-    #zPredictReshape=np.reshape(zPredict,(10,10))
+    beta = XXinv.dot(xMatrix.T).dot(zVector)    
     return beta,XXinv
 
 def Ridgeregression(xVector,yVector,zVector,polyOrder,lambda1):
@@ -86,9 +86,7 @@ def Ridgeregression(xVector,yVector,zVector,polyOrder,lambda1):
     #pseudo inversion using SVD
     XXinv=np.linalg.pinv(xMatrix.T.dot(xMatrix)+ lambda1*I)
     beta = XXinv.dot(xMatrix.T).dot(zVector)
-    #print(beta)
-    #zPredict=xMatrix.dot(beta)
-    #zPredictReshape=np.reshape(zPredict,(10,10))
+    
     return beta,XXinv
 
 def computeZpredict(xVector,yVector,beta,polyOrder):
@@ -148,16 +146,17 @@ def k_folds_CV(dataset, nfolds):
     return splitedDataset
 
 def trainSetindex(indeces,testSetindex):
-    #given indeces of the test set, find the indeces of the train set
+    #given indeces of the test set, find the indeces of the training set
     size=np.size(indeces)
     mask = np.ones(size, dtype=bool)
     mask[testSetindex] = False
     return indeces[mask]
+
 def computeBiasandVar(zPredictmatrix,zVector):
     n=np.size(zPredictmatrix,0)
     m=np.size(zPredictmatrix,1)
     meanzPredictmatrix=np.mean(zPredictmatrix,1)
-    bias=np.sum(np.square(zVector-meanzPredictmatrix))
+    bias=(np.sum(np.square(zVector-meanzPredictmatrix)))/n
     newMatrix=np.zeros((n,m))
     for i in range(m-1):
         newMatrix[:,i]=zPredictmatrix[:,i]-meanzPredictmatrix
@@ -170,9 +169,14 @@ def computeBiasandVar(zPredictmatrix,zVector):
 def olsModel(polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
 #OLS Model
     sizeVector=np.size(zVector)
+    #how many types of polynomials
     numOfoders=len(polynom_oders)
+    #saving MSE and r2score
     statsMatrix=np.zeros((2,numberOfFolds,numOfoders))
+    #matrix of predicted z
     zPredictmatrix=np.zeros((sizeVector,numberOfFolds,numOfoders))
+    #34 = number of terms in polynomial order 5
+    betaMatrix=np.zeros((34,numberOfFolds,numOfoders))
     for j,order in enumerate(polynom_oders):
         for i in range(numberOfFolds):
             #print(i)
@@ -180,16 +184,18 @@ def olsModel(polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
             test1=folds[i]
             train1= trainSetindex(indeces,test1)
             beta,XXinv=OSLregression(xVector[train1],yVector[train1],zVector[train1],order)
+            betaMatrix[0:len(beta),i,j]=beta
         #zPredict=computeZpredict(xVector[test1],yVector[test1],beta,3)
             zPredictmatrix[:,i,j]=computeZpredict(xVector,yVector,beta,order)
             statsMatrix[0,i,j]=MSE(zVector[test1],zPredictmatrix[test1,i,j])
             statsMatrix[1,i,j]=r2score(zVector[test1],zPredictmatrix[test1,i,j])
+        #print(len(beta))
         print('STATS of MSE for polynom order {} is:'.format(str(order)))
         print(stats.describe(statsMatrix[0,:,j]))
         print('STATS of R2score for polynom order {} is:'.format(str(order)))
         print(stats.describe(statsMatrix[1,:,j]))
         print('\n')
-    return zPredictmatrix,statsMatrix
+    return zPredictmatrix,statsMatrix,betaMatrix
 
 def ridge_regress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
 #Ridge Model
@@ -199,6 +205,7 @@ def ridge_regress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFo
     numOfoders=len(polynom_oders)
     statsMatrix=np.zeros((2,numberOfFolds,numOfLambdas,numOfoders))
     zPredictmatrix=np.zeros((sizeVector,numberOfFolds,numOfLambdas,numOfoders))
+    betaMatrix=np.zeros((34,numberOfFolds,numOfLambdas,numOfoders))
     for j,order in enumerate(polynom_oders):
         for i in range(numberOfFolds):
             #print(i)
@@ -207,23 +214,24 @@ def ridge_regress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFo
             for  h,lbd in enumerate(lambda_values):           
                 beta,XXinv=Ridgeregression(xVector[train1],yVector[train1],zVector[train1],order,lbd)
         #zPredict=computeZpredict(xVector[test1],yVector[test1],beta,3)
+                betaMatrix[0:len(beta),i,h,j]=beta
                 zPredictmatrix[:,i,h,j]=computeZpredict(xVector,yVector,beta,order)
                 statsMatrix[0,i,h,j]=MSE(zVector[test1],zPredictmatrix[test1,i,h,j])
                 statsMatrix[1,i,h,j]=r2score(zVector[test1],zPredictmatrix[test1,i,h,j])
-    return zPredictmatrix,statsMatrix
+    return zPredictmatrix,statsMatrix,betaMatrix
 
 #Lasso Model
 def lassoRegress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
     from sklearn.linear_model import Lasso 
     from sklearn.metrics import mean_squared_error, r2_score
-
+    
 
     numOfLambdas=len(lambda_values)
     sizeVector=np.size(zVector)
     numOfoders=len(polynom_oders)
     statsMatrix=np.zeros((2,numberOfFolds,numOfLambdas,numOfoders))
     zPredictmatrix=np.zeros((sizeVector,numberOfFolds,numOfLambdas,numOfoders))
-
+    betaMatrix=np.zeros((34,numberOfFolds,numOfLambdas,numOfoders))
     for j,order in enumerate(polynom_oders):
         XMatrix=constructX(xVector,yVector,order)
         for i in range(numberOfFolds):
@@ -234,11 +242,14 @@ def lassoRegress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFol
                 #beta,XXinv=Ridgeregression(xVector[train1],yVector[train1],zVector[train1],order,lbd)
         #zPredict=computeZpredict(xVector[test1],yVector[test1],beta,3)
             
-                lasso=Lasso(lbd,max_iter=1000)
+                lasso=Lasso(lbd,max_iter=1000,fit_intercept=True)
                 lasso.fit(XMatrix[train1,:],zVector[train1])
+                beta=lasso.coef_
+                betaMatrix[0:len(beta),i,h,j]=beta
+                betaMatrix[0,i,h,j]=lasso.intercept_
                 zPredictmatrix[:,i,h,j]=lasso.predict(XMatrix)
                 #zPredictmatrix[:,i,h,j]=computeZpredict(xVector,yVector,beta,order)
                 statsMatrix[0,i,h,j]=mean_squared_error(zVector[test1],zPredictmatrix[test1,i,h,j])
                 statsMatrix[1,i,h,j]=r2_score(zVector[test1],zPredictmatrix[test1,i,h,j])
-    return zPredictmatrix,statsMatrix
+    return zPredictmatrix,statsMatrix,betaMatrix
 
