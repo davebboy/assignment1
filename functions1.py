@@ -232,10 +232,11 @@ def lassoRegress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFol
                 lasso=Lasso(lbd,max_iter=1000,fit_intercept=True)
                 lasso.fit(XMatrix[train1,:],zVector[train1])
                 zPredictmatrix[:,i,h,j]=lasso.predict(XMatrix)
-                betaMatrix[0:len(beta),i,h,j]=lasso.coef_
+                beta=lasso.coef_
+                betaMatrix[0:len(beta),i,h,j]=beta
                 betaMatrix[0,i,h,j]=lasso.intercept_
                 #zPredictmatrix[:,i,h,j]=computeZpredict(xVector,yVector,beta,order)
                 statsMatrix[0,i,h,j]=mean_squared_error(zVector[test1],zPredictmatrix[test1,i,h,j])
                 statsMatrix[1,i,h,j]=r2_score(zVector[test1],zPredictmatrix[test1,i,h,j])
-    return zPredictmatrix,statsMatrix
+    return zPredictmatrix,statsMatrix,betaMatrix
 
