@@ -10,20 +10,26 @@
 
 
 
-\title{INF4490 Mandatory Assignment 1: \\ Travelling Salesman Problem}
+\title{FYS-STK4155 Mandatory Assignment 1: \\ Regression analysis and resampling methods}
 \author{Minh Chien Nguyen (davidngcz@gmail.com)}
 
 \begin{document}
 \maketitle
 \nocite{*}
+\begin{abstract}
+The aim of this project is to compare three traditional approaches to regression analysis: Ordinary Least Squares method, Ridge regression and Lasso regression, using both simulated data and real data. In order to perform a proper assessment of the presented techniques, we employ a statistical method called k-fold cross-validation.
+\end{abstract}
 
-\section{Introduction}
-dfgagf\\
+\section*{Introduction}
+Regression is the oldest, simple and widely used supervised machine learning algorithm for data analysis. This method is mostly used for forecasting and finding out relationship between variables. The different between regression techniques is based on the number of independent variables and the type of relationship between the independent and dependent variables. Here, we will restrict ourselves to the case of polynomial regression.\\
 \\
-faf
+Three traditional methods of regression are recognized: Ordinary Least Squares method, Ridge regression and Lasso regression. All of them have received much attention among practitioners, as well as in academic literature.\\
+\\
+This text is organized as follows. Main tools and results which allow for application to fitting functions are presented in Section \ref{sec:techniques}. We further test performance of the presented methods on a Franke's
+function. Finally, the techniques are applied to real data in Section \ref{sec:realdata}. In the last part of the text, we resume the principal results and suggest potential improvements in the future.
 \section{Mathematical tools}
 \label{sec:techniques}
-This section provides an overview of basic regression methods. Preliminary knowledge of statistic is expected. There are many excellent textbooks (see e. g. \cite{abc} and \cite{abc}) which cover these topics. Here, however, the subtle mathematical issues are not addressed and we will present the main tools and results without details, but it will suffice for immediate application to fitting functions.\\
+This section provides an overview of basic regression methods. Preliminary knowledge of statistic is expected. There are many excellent textbooks (see e. g. \cite{abc},\cite{TRJ} and \cite{def}) which cover these topics. Here, however, the subtle mathematical issues are not addressed and we will present the main tools and results without details, but it will suffice for immediate application to fitting functions.\\
 
 \subsection{Linear regression}
 Linear regression is the most widely used statistical technique for predictive modeling, since it is very simple and often provides an good description of how the inputs affect the output.\\
@@ -37,7 +43,7 @@ The method of least squares suggest that the coefficients $\beta$ should minimiz
 \hat{\beta}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}).
 \label{eq:ols}
 \end{equation}
-The unique solution to equation \eqref{eq:ols} is given by \cite{def}
+The unique solution to equation \eqref{eq:ols} is given by (see \cite{def})
 \begin{equation}
 \hat{\beta} =\left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y}.
 \end{equation}
@@ -83,6 +89,8 @@ K-folds cross-variation is a very useful technique for calculating the performan
 \end{enumerate}
 \item Estimate the accuracy of the model by averaging the evaluation score derived in all the $k$ cases.
 \end{enumerate}
+For more information about regularization, we refer to \cite{TRJ}.
+
 \subsection{Performance criteria}
 To test the performance of our results, we list the relevant criteria that we use throughout this section. In the next part, we will denote $\tilde{\hat{y}}_i$  the predicted value of the $i-th$ sample and $y_i$ is the corresponding true value.\\
 \begin{enumerate}
@@ -112,6 +120,7 @@ Models with high variance usually perform very well on training data but have hi
 \section{Testing on simulated and real data}
 After the theoretical considerations of the previous sections, we now want to test the performance of the presented techniques. First, we study how to fit polynomials to a Franke's function. Then we apply the methods on the polynomial approximation of digital terrain data.
 \subsection{Franke's function}
+\label{sebsec:franke}
 In this section we perform a regression analysis of a specific two-dimensional function called Franke's
 function which is defined for $x,y\in [0,1]$ as
 
@@ -308,14 +317,18 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 Bias for the best Lasso model is $0.01349$ and Variance is $3.966e-07$. We can see that, the value for the bias of the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
 
 \subsection{Real data}
+\label{sec:realdata}
 To illustrate the techniques described in Section \ref{sec:techniques}, we apply them to the digital terrain data from the website: https://earthexplorer.usgs.gov/.
 \subsubsection{OLS real data}
 \subsubsection{Ridge real data}
 \subsubsection{Lasso real data}
+
+\section*{Conclusion}
+
 \begin{thebibliography}{111}
 \raggedright
-\bibitem{abc} EIBEN, Agoston E., et al. Introduction to evolutionary computing. Berlin: springer, 2003.
-\bibitem{def} MARSLAND, Stephen. Machine learning: an algorithmic perspective. Chapman and Hall/CRC, 2011.
-
+\bibitem{abc} Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer.
+\bibitem{def} MARSLAND, Stephen. Machine learning: an algorithmic perspective. Chapman and Hall/CRC.
+\bibitem{TRJ} Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning. Springer
 \end{thebibliography}
 \end{document}
