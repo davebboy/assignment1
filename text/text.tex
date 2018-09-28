@@ -251,7 +251,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:RidgeFranke}
 \end{figure}
-Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $0.00268$ and Variance: $4.45e-07$
+Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $0.00436$ and Variance: $8.61e-07$
 
 
 \subsubsection{Lasso regression on the Franke function  with resampling}
@@ -314,13 +314,77 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
         \label{fig:LassoFranke}
 \end{figure}
 
-Bias for the best Lasso model is $0.01349$ and Variance is $3.966e-07$. We can see that, the value for the bias of the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
+Bias for the best Lasso model is $0.01349$ and Variance is $7.373e-07$. We can see that, the value for the bias of the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
 
 \subsection{Real data}
 \label{sec:realdata}
 To illustrate the techniques described in Section \ref{sec:techniques}, we apply them to the digital terrain data from the website: https://earthexplorer.usgs.gov/.
 \subsubsection{OLS real data}
+
+\begin{table}[H]
+\centering
+%\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll}
+\hline
+  & MSE    & R2 score \\ \hline
+3 & 305.03 & 0.71      \\
+4 & 219.98 & 0.78     \\
+5 & 170.80 & 0.82     \\ \hline
+\end{tabular}%
+%}
+\caption{My caption}
+\label{tab:olsTerrain}
+\end{table}
+Avarage Bias for the final model is: $169.51$ and avarage Variance is: $0.111$.
 \subsubsection{Ridge real data}
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 304.89 & 0.71          \\
+0.01      & 304.89 & 0.71          \\
+0.1       & 304.89 & 0.71         \\
+1         & 305.09 & 0.71         \\
+10        & 321.40 & 0.66          \\
+100       & 760.59 & -0.53          \\ \hline
+\end{tabular}
+\caption{order3}
+\label{tab:ridge3Terrain}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 219.86 & 0.78          \\
+0.01      & 219.86 & 0.78          \\
+0.1       & 219.86 & 0.78         \\
+1         & 220.27 & 0.78          \\
+10        & 248.02 & 0.69          \\
+100       & 599.39 & -0.31          \\ \hline
+\end{tabular}
+\caption{order4}
+\label{tab:ridge4Terrain}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 170.65 & 0.82          \\
+0.01      & 170.65 & 0.82          \\
+0.1       & 170.65 & 0.82         \\
+1         & 171.38 & 0.81          \\
+10        & 209.01 & 0.70          \\
+100       & 443.66 & 0.01          \\ \hline
+\end{tabular}
+\caption{order5}
+\label{tab:ridge5Terrain}
+\end{table}
+Average bias for the best Rigde model is: $169.51$ and average Variance: $0.102$
 \subsubsection{Lasso real data}
 
 \section*{Conclusion}

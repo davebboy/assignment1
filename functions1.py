@@ -74,7 +74,7 @@ def Ridgeregression(xVector,yVector,zVector,polyOrder,lambda1):
     size1=np.size(xMatrix,1)
     I=np.identity(size1)
     #pseudo inversion using SVD
-    XXinv=np.linalg.pinv(xMatrix.T.dot(xMatrix)+ lambda1*I)
+    XXinv=np.linalg.inv(xMatrix.T.dot(xMatrix)+ lambda1*I)
     beta = XXinv.dot(xMatrix.T).dot(zVector)
 
     return beta,XXinv
@@ -82,6 +82,8 @@ def Ridgeregression(xVector,yVector,zVector,polyOrder,lambda1):
 def computeZpredict(xVector,yVector,beta,polyOrder):
     #
     xMatrix=constructX(xVector,yVector,polyOrder)
+    size=np.size(xMatrix,1)
+    beta=beta[0:size]
     zPredict=xMatrix.dot(beta)
     return zPredict
 
@@ -104,6 +106,27 @@ def plotTheSurface(x,y,z):
     ax.set_zlabel('Z')
     #plt.show();
     return fig
+def plotcoefficients(beta1):
+    dtype = ['1','x', 'y', 'x**2', 'x*y', 'y**2', \
+                'x**3', 'x**2*y', 'x*y**2', 'y**3', \
+                'x**4', 'x**3*y', 'x**2*y**2', 'x*y**3','y**4', \
+               'x**5', 'x**4*y', 'x**3*y**2', 'x**2*y**3','x*y**4', 'y**5']
+    indexsort = np.argsort(beta1)
+    xlabel=list()
+    for index in indexsort:
+    
+        xlabel.append(dtype[index])
+
+    fig = plt.figure(figsize=(20,12))
+    plt.bar(xlabel,beta1[indexsort],width=0.4)
+    plt.xticks(rotation=90,fontsize='15')
+    plt.yticks(fontsize='15')
+    plt.xlabel('Variable',fontsize='15')
+    plt.ylabel('Coefficient',fontsize='15')
+    plt.ylim(-50, 50)
+    plt.title('Varialbe Coefficients',fontsize='15')
+    return fig
+    
 
 def train_test_split(dataset, split):
     # Split a dataset into a train and test set
@@ -146,6 +169,7 @@ def computeBiasandVar(zPredictmatrix,zVector):
     n=np.size(zPredictmatrix,0)
     m=np.size(zPredictmatrix,1)
     meanzPredictmatrix=np.mean(zPredictmatrix,1)
+    
     bias=(np.sum(np.square(zVector-meanzPredictmatrix)))/n
     newMatrix=np.zeros((n,m))
     for i in range(m-1):
@@ -177,11 +201,11 @@ def olsModel(polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
             statsMatrix[0,i,j]=MSE(zVector[test1],zPredictmatrix[test1,i,j])
             statsMatrix[1,i,j]=r2score(zVector[test1],zPredictmatrix[test1,i,j])
         #print(len(beta))
-        print('STATS of MSE for polynom order {} is:'.format(str(order)))
-        print(stats.describe(statsMatrix[0,:,j]))
-        print('STATS of R2score for polynom order {} is:'.format(str(order)))
-        print(stats.describe(statsMatrix[1,:,j]))
-        print('\n')
+        #print('STATS of MSE for polynom order {} is:'.format(str(order)))
+        #print(stats.describe(statsMatrix[0,:,j]))
+        #print('STATS of R2score for polynom order {} is:'.format(str(order)))
+        #print(stats.describe(statsMatrix[1,:,j]))
+        #print('\n')
     return zPredictmatrix,statsMatrix,betaMatrix
 
 def ridge_regress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFolds,folds,indeces):
@@ -229,7 +253,7 @@ def lassoRegress(lambda_values,polynom_oders,xVector,yVector,zVector,numberOfFol
                 #beta,XXinv=Ridgeregression(xVector[train1],yVector[train1],zVector[train1],order,lbd)
         #zPredict=computeZpredict(xVector[test1],yVector[test1],beta,3)
             
-                lasso=Lasso(lbd,max_iter=1000,fit_intercept=True)
+                lasso=Lasso(lbd,max_iter=1000,fit_intercept=True,random_state=0)
                 lasso.fit(XMatrix[train1,:],zVector[train1])
                 zPredictmatrix[:,i,h,j]=lasso.predict(XMatrix)
                 beta=lasso.coef_
