@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  27 SEP 2018 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  28 SEP 2018 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,7 +164,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count105
 \FV@StepNumber=\count106
 \FV@OutFile=\write3
-) (./text.aux)
+) (./text.aux
+
+LaTeX Warning: Label `tab:ridge5Terrain' multiply defined.
+
+)
 \openout1 = `text.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -179,8 +183,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen121
@@ -305,58 +308,120 @@ Package pdftex.def Info: figures/Franke.png used on input line 137.
 <figures/olsFranke.png, id=36, 1445.4pt x 722.7pt>
 File: figures/olsFranke.png Graphic file (type png)
  <use figures/olsFranke.png>
-Package pdftex.def Info: figures/olsFranke.png used on input line 190.
+Package pdftex.def Info: figures/olsFranke.png used on input line 191.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 
-[7] [8 <./figures/olsFranke.png>]
-<figures/RidgeFranke.png, id=45, 1445.4pt x 722.7pt>
+[7] <figures/coeffOLS.png, id=41, 1445.4pt x 867.24pt>
+File: figures/coeffOLS.png Graphic file (type png)
+
+<use figures/coeffOLS.png>
+Package pdftex.def Info: figures/coeffOLS.png used on input line 198.
+(pdftex.def)             Requested size: 360.0pt x 216.00226pt.
+ [8 <./figures/olsFranke.png>] [9 <./figures/coeffOLS.png>] <figures/coeffRidge
+.png, id=50, 1445.4pt x 867.24pt>
+File: figures/coeffRidge.png Graphic file (type png)
+
+<use figures/coeffRidge.png>
+Package pdftex.def Info: figures/coeffRidge.png used on input line 261.
+(pdftex.def)             Requested size: 360.0pt x 216.00226pt.
+ [10]
+Underfull \hbox (badness 10000) in paragraph at lines 270--272
+
+ []
+
+[11 <./figures/coeffRidge.png>]
+<figures/coeffLasso.png, id=58, 1445.4pt x 867.24pt>
+File: figures/coeffLasso.png Graphic file (type png)
+
+<use figures/coeffLasso.png>
+Package pdftex.def Info: figures/coeffLasso.png used on input line 326.
+(pdftex.def)             Requested size: 360.0pt x 216.00226pt.
+ [12]
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
+
+ []
+
+<figures/TerrainPrague.png, id=62, 350.30875pt x 610.28pt>
+File: figures/TerrainPrague.png Graphic file (type png)
+
+<use figures/TerrainPrague.png>
+Package pdftex.def Info: figures/TerrainPrague.png used on input line 339.
+(pdftex.def)             Requested size: 180.0pt x 313.58533pt.
+ [13 <./figures/coeffLasso.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 343--345
+
+ []
+
+[14 <./figures/TerrainPrague.png>]
+<figures/TerrainPraguePred.png, id=72, 375.4025pt x 612.2875pt>
+File: figures/TerrainPraguePred.png Graphic file (type png)
+
+<use figures/TerrainPraguePred.png>
+Package pdftex.def Info: figures/TerrainPraguePred.png used on input line 364.
+(pdftex.def)             Requested size: 180.0pt x 293.58635pt.
+ [15 <./figures/TerrainPraguePred.png>]
+[16]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--420
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--420
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--420
+
+ []
+
+[17] [18] [19] <figures/RidgeFranke.png, id=90, 1445.4pt x 722.7pt>
 File: figures/RidgeFranke.png Graphic file (type png)
 
 <use figures/RidgeFranke.png>
-Package pdftex.def Info: figures/RidgeFranke.png used on input line 250.
+Package pdftex.def Info: figures/RidgeFranke.png used on input line 434.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
- [9] [10 <./figures/RidgeFranke.png>]
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 278.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 294.
-
-<figures/LassoFranke.png, id=53, 1445.4pt x 722.7pt>
+<figures/LassoFranke.png, id=91, 1445.4pt x 722.7pt>
 File: figures/LassoFranke.png Graphic file (type png)
 
 <use figures/LassoFranke.png>
-Package pdftex.def Info: figures/LassoFranke.png used on input line 312.
+Package pdftex.def Info: figures/LassoFranke.png used on input line 441.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
- [11] [12 <./figures/LassoFranke.png>] [13]
-[14] (./text.aux) ) 
+ [20 <./figures/RidgeFranke.png> <./figures/LassoFranke.png>] [21] (./text.aux)
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3954 strings out of 493089
- 58709 string characters out of 6134843
- 123678 words of memory out of 5000000
- 7384 multiletter control sequences out of 15000+600000
+ 3984 strings out of 493089
+ 59442 string characters out of 6134843
+ 123764 words of memory out of 5000000
+ 7409 multiletter control sequences out of 15000+600000
  14122 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,10n,40p,839b,271s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
->
-Output written on text.pdf (14 pages, 504472 bytes).
+ 42i,10n,40p,783b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on text.pdf (21 pages, 814008 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 139 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

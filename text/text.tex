@@ -49,32 +49,32 @@ The unique solution to equation \eqref{eq:ols} is given by (see \cite{def})
 \end{equation}
 
 \subsection{Regularization}
-One of the most common method to overcome overfitting is regularization. The main concept behind this approach is simplifying the model as much as possible. In other words, we reduce the magnitude of the coefficients of inputs in our model. In the following part, we present two different types of regression techniques using regularization.
+One of the common problem while using OLS model is overfitting, which means that the model contains more parameters than can be justified by data. To solve the problem of overfitting in our model we need to increase flexibility of our model by using regularization. The main concept behind this approach is simplifying the model as much as possible. In other words, we reduce the magnitude of the coefficients of inputs in our model. In the following part, we present two different types of regression techniques using regularization.
 
 \subsubsection*{Ridge Regression}
 The first techniques is called ridge regression and its coefficients are defined by 
 \begin{equation}
-\hat{\beta}^{\text{ridge}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} \beta_{j}^{2}).
+\hat{\beta}^{\text{ridge}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \alpha \sum_{j=1}^{p} \beta_{j}^{2}).
 \label{eq:ridge}
 \end{equation}
-In equation \eqref{eq:ridge} we added an extra term, which is known as the penalty term. $\lambda \geq 0$ is called tuning parameter. It easy to see that higher the value of $\alpha$, higher is the term 
+In equation \eqref{eq:ridge} we added an extra term, which is known as the penalty term. $\alpha \geq 0$ is called tuning parameter. It easy to see that higher the value of $\alpha$, higher is the term 
 \begin{equation*}
-\sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} \beta_{j}^{2}
+\sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \alpha \sum_{j=1}^{p} \beta_{j}^{2}
 \end{equation*}
-therefore the magnitude of coefficients $\beta$ are reduced. Roughly speaking, we punish the cost function for high values of $\beta$. It is important to note that the parameter $\lambda$ can be learned as well, using a method called cross validation that will be discussed in section \ref{sec_kcross}.
+therefore the magnitude of coefficients $\beta$ are reduced. Roughly speaking, we punish the cost function for high values of $\beta$. It is important to note that the parameter $\alpha$ can be learned as well, using a method called cross validation that will be discussed in section \ref{sec_kcross}.
 The ridge regression solution is given by
 \begin{equation}
-\hat{\beta} =\left(\hat{X}^T\hat{X} + \lambda I \right)^{-1}\hat{X}^T\hat{y},
+\hat{\beta} =\left(\hat{X}^T\hat{X} + \alpha I \right)^{-1}\hat{X}^T\hat{y},
 \end{equation}
 where $I$ is the $p \times p$ identity matrix.
 \subsubsection*{Lasso Regression}
 Lasso is similar to ridge, but with a small twist. The lasso estimate is in the form
 \begin{equation}
-\hat{\beta}^{\text{lasso}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \lambda \sum_{j=1}^{p} |\beta_{j}|).
+\hat{\beta}^{\text{lasso}}=\text{argmin}_{\beta} ( \sum_{i=1}^{N}(y_{i}- \beta_{0}- \sum_{j=1}^{p}x_{ij}\beta_{j})^{2}+ \alpha \sum_{j=1}^{p} |\beta_{j}|).
 \label{eq:lasso}
 \end{equation}
-An important note to notice in equation \eqref{eq:lasso} is that the only difference from ridge regression is term $\lambda \sum_{j=1}^{p} |\beta_{j}|$. Here, the method might include fewer predictors in the model, since lasso sets the irrelevant coefficient $\beta$ to zero.
-\subsection{K-folds cross-variation}
+An important note to notice in equation \eqref{eq:lasso} is that the only difference from ridge regression is term $\alpha \sum_{j=1}^{p} |\beta_{j}|$. Here, the method might include fewer predictors in the model, since lasso sets the irrelevant coefficient $\beta$ to zero.
+\subsection{K-folds cross-validation}
 \label{sec_kcross}
 K-folds cross-variation is a very useful technique for calculating the performance of prediction models. The general procedure can be described as follows:
 \begin{enumerate}
@@ -167,6 +167,7 @@ Now, we perform a resampling of the data for the OLS regression analysis least s
 \item Evaluate the Franke's function with an added stochastic noise to it using  the normal distribution $N(0,1)$.
 \item Perform resampling of the data using k-fold Cross-Validation
 \item Fit the OLS regression model for each fold and each order of polynomials.
+\item Create a new model by taking median of coefficients of all folds.
 \end{enumerate}
 Table \ref{tab:olsFranke} shows the results obtained using classical OLS method with resampling. We see that as the order of the polynomial fit increases the value of  the mean squared error (MSE) decreases, this means that using higher order polynomials is much more accurate. 
 
@@ -191,17 +192,27 @@ Similarly, there is an increase in the value R-square as the order of polynomial
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
         \label{fig:olsFranke}
 \end{figure}
-Whenever we discuss model prediction, it is important to understand prediction errors (bias and variance). Bias for the final model is: $0.00245$ and Variance is: $5.48e-07$. We conclude that our model is underfit neither overfit, since the error of our model is relatively low.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figures/coeffOLS.png}
+        \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
+        \label{fig:coeffOLS}
+\end{figure}
+
+The magnitudes of coefficients in the OLS model are illustrated in Figure \ref{fig:coeffOLS}. We see that the value of the Franke's function is more driven by terms $x^{3}$ and $x^{3}y$, since coefficients of these terms are much higher as compared to rest of the coefficients. It is important to note that the magnitudes of term $x^{5}$ and the intercept are relatively small, thus we could consider drop these terms out of our model.\\
+Whenever we discuss model prediction, it is important to understand prediction errors (bias and variance). Bias for the final model is: $0.00245$ and Variance is: $5.48e-07$. We conclude that our model is underfitted neither overfitted, since the error of our model is relatively low.
 
 
 \subsubsection{Rigde regression on the Franke function  with resampling}
-In this part, we perform the same analysis as in the previous section for the Ridge regression with different values of $\lambda$ but now only with resampling.\\
-As mentioned above our model is not overfit, therefore it is not surprising that the best result is obtained using low value of the tuning parameter $\lambda$. In Tables \ref{tab:ridge3}, \ref{tab:ridge4} and \ref{tab:ridge5} we see that as the value of $\lambda$ decreases the value of MSE for the Ridge regression model with resampling decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.
+In this part, we perform the same analysis as in the previous section for the Ridge regression with different values of $\alpha$ but now only with resampling.\\
+As mentioned above our model is not overfitted, therefore it is not surprising that the best result is obtained using low value of the tuning parameter $\alpha$. In Tables \ref{tab:ridge3}, \ref{tab:ridge4} and \ref{tab:ridge5} we see that as the value of $\alpha$ decreases the value of MSE for the Ridge regression model with resampling decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.\\
+Tables \ref{tab:ridge5} shows that the value of $R^{2}$ reaches the maximum at $\alpha=0.001$. In this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model.
 \begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0082 & 0.90          \\
 0.01      & 0.0082 & 0.90          \\
 0.1       & 0.0082 & 0.90          \\
@@ -217,7 +228,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0043 & 0.94          \\
 0.01      & 0.0047 & 0.94          \\
 0.1       & 0.0071 & 0.91          \\
@@ -233,7 +244,7 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0027 & 0.96          \\
 0.01      & 0.0037 & 0.95          \\
 0.1       & 0.0056 & 0.93          \\
@@ -247,23 +258,26 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{figures/RidgeFranke.png}
+\includegraphics[width=1\textwidth]{figures/coeffRidge.png}
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
-        \label{fig:RidgeFranke}
+        \label{fig:coeffRidge}
 \end{figure}
-Again, in this case the obtained results of the model using polynomial order $5$ is similar to the results using ordinary OLS model. Bias for the final Rigde model is: $0.00436$ and Variance: $8.61e-07$
+In Figure \ref{fig:coeffRidge} we can see the effect of Ridge regression for $\alpha=0.001$, where the magnitude of the coefficients have been decreased, also the values reaches to zero but not absolute zero. Bias for the final Rigde model is: $0.00436$ and Variance: $8.61e-07$
 
 
 \subsubsection{Lasso regression on the Franke function  with resampling}
  
-This part is essentially a repeat of the previous two ones, but now with Lasso regression with resampling. Tables \ref{tab:LassoFranke3}, \ref{tab:LassoFranke4} and \ref{tab:LassoFranke5} illustrate the results for Ridge regression using different values of $\alpha$ and orders of polynomials. It is worth mentioning that for some values of $\alpha$ the coefficient of determination $R^{2}$ is negative. The reason is that by increasing $\lambda$ we reduce the magnitude of the coefficients. The higher the values of alpha is , the bigger is the penalty and therefore the magnitude of coefficients are reduced more. However, we also know that our OLS model is not overfit, which means that all predictors in our model are important and by reducing the magnitude of their coefficients we get worse predictions. 
+This part is essentially a repeat of the previous two ones, but now with Lasso regression with resampling. Tables \ref{tab:LassoFranke3}, \ref{tab:LassoFranke4} and \ref{tab:LassoFranke5} illustrate the results for Ridge regression using different values of $\alpha$ and orders of polynomials.\\
+It is worth mentioning that for some values of $\alpha$ the coefficient of determination $R^{2}$ is negative. The reason is that by increasing $\alpha$ we reduce the magnitude of the coefficients. The higher the values of alpha is , the bigger is the penalty and therefore the magnitude of coefficients are reduced more. For instance, in Figure \ref{fig:coeffLasso} we can see that even at small values of $\alpha=0.001$, the magnitude of coefficients have reduced a lot.\\
+
+However, we also know that our OLS model is not overfitted, which means that all predictors in our model are important and by reducing the magnitude of their coefficients we get worse predictions. 
 
 
 \begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0180 & 0.78          \\
 0.01      & 0.0254 & 0.69          \\
 0.1       & 0.0830 & -0.0011       \\
@@ -275,11 +289,11 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 \label{tab:LassoFranke3}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0142 & 0.82          \\
 0.01      & 0.0254 & 0.69          \\
 0.1       & 0.0830 & -0.0011       \\
@@ -291,11 +305,11 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 \label{tab:LassoFranke4}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 0.0135 & 0.83          \\
 0.01      & 0.0254 & 0.69          \\
 0.1       & 0.0830 & -0.0011       \\
@@ -309,18 +323,27 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{figures/LassoFranke.png}
+\includegraphics[width=1\textwidth]{figures/coeffLasso.png}
         \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
-        \label{fig:LassoFranke}
+        \label{fig:coeffLasso}
 \end{figure}
 
 Bias for the best Lasso model is $0.01349$ and Variance is $7.373e-07$. We can see that, the value for the bias of the Lasso model has been increased in comparison with the OLS and Ridge model. Therefore, in this case Lasso model is predicting worse than both OLS and Ridge.
 
 \subsection{Real data}
 \label{sec:realdata}
-To illustrate the techniques described in Section \ref{sec:techniques}, we apply them to the digital terrain data from the website: https://earthexplorer.usgs.gov/.
-\subsubsection{OLS real data}
+To illustrate the techniques described in Section \ref{sec:techniques}, we apply them to the digital terrain data from the website: https://earthexplorer.usgs.gov/. Figure \ref{fig:TerrainPrague} displays an image of the digital terrain data from Prague in Czech Republic on a $2D$ regular raster. \\
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/TerrainPrague.png}
+        \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
+        \label{fig:TerrainPrague}
+\end{figure}
+As can be seen, the scale of this data set is much bigger than in the case of the Franke's function, therefore it is useful here to skrink the amount of data. In the next section, we divide our data set into $900$ smaller parts containing $120 \times 60$ data points. Next, we perform the same analysis as in the previous exercise for each part. The evaluation score that we use to measure the performance of presented models, such as MSE, $R^{2}$ etc., are computed by averaging the evaluation score derived in all parts. \\
+%In next section, we apply all three methods for linear regression as in Section \ref{sebsec:franke}, the same %type of polynomial approximation and the same resampling techniques to evaluate which model fits the data best.
+\subsubsection{OLS real data}
+Regarding the performance of the OLS method, we present the results for the terrain data in Table \ref{tab:olsTerrain}. We see that the polynomial order $5$ outperformed the others, with almost twice as low MSE in comparison with the polynomial of order $3$ (170.80 vs 305.03). The $R^{2}$ score is $0.82$ for the highest order polynomial approximation and only $0.71$ for the lowest. 
 \begin{table}[H]
 \centering
 %\resizebox{\textwidth}{!}{%
@@ -335,45 +358,26 @@ To illustrate the techniques described in Section \ref{sec:techniques}, we apply
 \caption{My caption}
 \label{tab:olsTerrain}
 \end{table}
-Avarage Bias for the final model is: $169.51$ and avarage Variance is: $0.111$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/TerrainPraguePred.png}
+        \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
+        \label{fig:TerrainPraguePred}
+\end{figure}
+In Figure \ref{fig:TerrainPraguePred} the image of the predicted terrain data is illustrated. Its obvious from the image that the reconstruction of the original image is not satisfactory. The comparison further shows that the average bias for the final model is: $169.51$ and the average variance is: $0.111$, which indicates that our model might be underfitted. We conclude that using more complex model might help to reduce the bias.
+
+
 \subsubsection{Ridge real data}
-\begin{table}[H]
-\centering
-\begin{tabular}{lll}
-\hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
-0.001     & 304.89 & 0.71          \\
-0.01      & 304.89 & 0.71          \\
-0.1       & 304.89 & 0.71         \\
-1         & 305.09 & 0.71         \\
-10        & 321.40 & 0.66          \\
-100       & 760.59 & -0.53          \\ \hline
-\end{tabular}
-\caption{order3}
-\label{tab:ridge3Terrain}
-\end{table}
+In Table \ref{tab:ridge5Terrain} we present the results for the terrain data using Ridge regression with polynomial approximation order $5$. Results for the remaining polynomial approximation can be found in the Appendix. Again, we see that as the value of $\alpha$ decreases the value of MSE for the Ridge regression model with K-folds cross-validation decreases, meanwhile the coefficient of determination $R^{2}$ is increasing.\\
+Not surprisingly, the MSE is $170.65$ when using Ridge model with $\alpha=0.001$ which is very close to the number for the OLS model ($170.80$). A similar conclusion can be made for the $R^{2}$ score. The reason is that form the previous part we suspect that our model using polynomial approximation order $5$ might be underfitted, therefore by reducing magnitudes of the coefficients, only worse  results can be expected. Finally, the average bias for the final Rigde model is $169.51$ and the average Variance is $0.102$.
+
 
 \begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
-0.001     & 219.86 & 0.78          \\
-0.01      & 219.86 & 0.78          \\
-0.1       & 219.86 & 0.78         \\
-1         & 220.27 & 0.78          \\
-10        & 248.02 & 0.69          \\
-100       & 599.39 & -0.31          \\ \hline
-\end{tabular}
-\caption{order4}
-\label{tab:ridge4Terrain}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lll}
-\hline
-$\lambda$ & MSE    & $R^{2}$ score \\ \hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
 0.001     & 170.65 & 0.82          \\
 0.01      & 170.65 & 0.82          \\
 0.1       & 170.65 & 0.82         \\
@@ -384,15 +388,93 @@ $\lambda$ & MSE    & $R^{2}$ score \\ \hline
 \caption{order5}
 \label{tab:ridge5Terrain}
 \end{table}
-Average bias for the best Rigde model is: $169.51$ and average Variance: $0.102$
+
+
 \subsubsection{Lasso real data}
+Even worse is the performance of the model using Lasso regression using polynomial approximation order $5$, as can be seen in Table \ref{tab:ridge5Terrain}. Interestingly, the values of both MSE and $R^{2}$ score are very similar for all values of $\alpha$. The average bias for the Ridge model is $245.95$ and average variance is $0.086$.
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 246.98 & 0.76          \\
+0.01      & 246.95 & 0.76          \\
+0.1       & 246.93 & 0.76         \\
+1         & 246.87 & 0.75          \\
+10        & 251.73 & 0.75          \\
+100       & 261.97 & 0.74          \\ \hline
+\end{tabular}
+\caption{order5}
+\label{tab:ridge5Terrain}
+\end{table}
+
 
 \section*{Conclusion}
+In this text, we presented three different regression methods for data analysis. First, we introduced a very simple strategy which minimize the sum of the squares of the differences between the observed dependent variable and those predicted by the model. Then, we presented a more sophisticated methods which penalize the number of features in a model in order to only keep the most important features in the model. Next, k-fold cross-validation technique was introduced to perform a proper assessment of the presented techniques .\\
+\\
+At the beginning of the application part, the Franke's function was used to illustrate the presented methods. This was then followed by the analysis of the methods used on the real terrain data. To summarize, the OLS model has worked better for the Franke's function yielding lower MSE values and higher values of the $R^{2}$ score. We also conclude that neither the Ridge nor Lasso model offer clearly better results compared to the case when the OLS method is used. In our opinion, this is attributable to the simplicity of the model while using regularization. In the case of the terrain data, after reducing the magnitude of the coefficient, the model was not complex enough to accurately capture relationships between a dataset’s features and a target variable.  \\
+\\
+Furthermore, in the case of the terrain data a deviation of the predicted values from the observed dependent variable for all models was quite large, resulting in a large value of error. The reason is that we represent an image as a vector. However, in this case we loose information about vicinity of pixels. For instance, the pixels that are close to each other could be very distant in the vector. Another point to note that inverting matrix for a very large input vectors can be computationally expensive. Therefore we conclude that using classical regression techniques for larger data sets might be very unpractical.\\
+\\
+As part of the future expansion of this text, it would be desirable to implement some adaptive techniques for selecting the tuning parameter used in regularization. We also should spend some more effort in researching a more effective approach to capture spatial relations between pixels in a image.
 
+\newpage
 \begin{thebibliography}{111}
 \raggedright
 \bibitem{abc} Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer.
 \bibitem{def} MARSLAND, Stephen. Machine learning: an algorithmic perspective. Chapman and Hall/CRC.
 \bibitem{TRJ} Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning. Springer
 \end{thebibliography}
+
+\newpage
+\appendix
+\section{Appendix}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figures/RidgeFranke.png}
+        \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
+        \label{fig:RidgeFranke}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figures/LassoFranke.png}
+        \caption{Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA}
+        \label{fig:LassoFranke}
+\end{figure}
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 304.89 & 0.71          \\
+0.01      & 304.89 & 0.71          \\
+0.1       & 304.89 & 0.71         \\
+1         & 305.09 & 0.71         \\
+10        & 321.40 & 0.66          \\
+100       & 760.59 & -0.53          \\ \hline
+\end{tabular}
+\caption{real data order3}
+\label{tab:ridge3Terrain}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+$\alpha$ & MSE    & $R^{2}$ score \\ \hline
+0.001     & 219.86 & 0.78          \\
+0.01      & 219.86 & 0.78          \\
+0.1       & 219.86 & 0.78         \\
+1         & 220.27 & 0.78          \\
+10        & 248.02 & 0.69          \\
+100       & 599.39 & -0.31          \\ \hline
+\end{tabular}
+\caption{real data order4}
+\label{tab:ridge4Terrain}
+\end{table}
 \end{document}
+
+
+
+
