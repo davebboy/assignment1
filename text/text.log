@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  28 SEP 2018 17:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.4)  1 OCT 2018 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -266,14 +266,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--30
 
  []
 
+[1
 
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
  []
 
-[1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (15.21393pt too wide) in paragraph at lines 35--38
 \OT1/cmr/m/n/10.95 Let $(\OML/cmm/m/it/10.95 x[]; y[]\OT1/cmr/m/n/10.95 )\OML/c
 mm/m/it/10.95 ; [] ; \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]; y[]\OT1/cmr/m
@@ -289,55 +289,66 @@ T1/cmr/m/n/10.95 mea-sure-ment. The set of vari-ables $(\OML/cmm/m/it/10.95 x[]
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 [4]
-Overfull \hbox (11.76515pt too wide) in paragraph at lines 131--131
+Overfull \hbox (11.76515pt too wide) in paragraph at lines 130--130
 [] 
  []
 
 <figures/Franke.png, id=26, 1445.4pt x 722.7pt>
 File: figures/Franke.png Graphic file (type png)
  <use figures/Franke.png>
-Package pdftex.def Info: figures/Franke.png used on input line 137.
+Package pdftex.def Info: figures/Franke.png used on input line 136.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
 
-[5] [6 <./figures/Franke.png>]
-<figures/olsFranke.png, id=36, 1445.4pt x 722.7pt>
+[5] [6 <./figures/Franke.png>] [7]
+<figures/olsFranke.png, id=40, 1445.4pt x 722.7pt>
 File: figures/olsFranke.png Graphic file (type png)
  <use figures/olsFranke.png>
-Package pdftex.def Info: figures/olsFranke.png used on input line 191.
+Package pdftex.def Info: figures/olsFranke.png used on input line 188.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
 
-[7] <figures/coeffOLS.png, id=41, 1445.4pt x 867.24pt>
+<figures/coeffOLS.png, id=41, 1445.4pt x 867.24pt>
 File: figures/coeffOLS.png Graphic file (type png)
-
-<use figures/coeffOLS.png>
-Package pdftex.def Info: figures/coeffOLS.png used on input line 198.
+ <use figures/coeffOLS.png>
+Package pdftex.def Info: figures/coeffOLS.png used on input line 195.
 (pdftex.def)             Requested size: 360.0pt x 216.00226pt.
- [8 <./figures/olsFranke.png>] [9 <./figures/coeffOLS.png>] <figures/coeffRidge
-.png, id=50, 1445.4pt x 867.24pt>
+
+[8 <./figures/olsFranke.png>]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+ [9 <./figures/coeffOLS.png>]
+<figures/coeffRidge.png, id=50, 1445.4pt x 867.24pt>
 File: figures/coeffRidge.png Graphic file (type png)
 
 <use figures/coeffRidge.png>
-Package pdftex.def Info: figures/coeffRidge.png used on input line 261.
+Package pdftex.def Info: figures/coeffRidge.png used on input line 258.
 (pdftex.def)             Requested size: 360.0pt x 216.00226pt.
- [10]
-Underfull \hbox (badness 10000) in paragraph at lines 270--272
-
- []
-
-[11 <./figures/coeffRidge.png>]
+ [10] [11 <./figures/coeffRidge.png>]
 <figures/coeffLasso.png, id=58, 1445.4pt x 867.24pt>
 File: figures/coeffLasso.png Graphic file (type png)
 
 <use figures/coeffLasso.png>
-Package pdftex.def Info: figures/coeffLasso.png used on input line 326.
+Package pdftex.def Info: figures/coeffLasso.png used on input line 322.
 (pdftex.def)             Requested size: 360.0pt x 216.00226pt.
  [12]
-Underfull \hbox (badness 10000) in paragraph at lines 335--336
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
@@ -345,10 +356,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 335--336
 File: figures/TerrainPrague.png Graphic file (type png)
 
 <use figures/TerrainPrague.png>
-Package pdftex.def Info: figures/TerrainPrague.png used on input line 339.
+Package pdftex.def Info: figures/TerrainPrague.png used on input line 335.
 (pdftex.def)             Requested size: 180.0pt x 313.58533pt.
  [13 <./figures/coeffLasso.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 343--345
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
 
  []
 
@@ -357,7 +368,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--345
 File: figures/TerrainPraguePred.png Graphic file (type png)
 
 <use figures/TerrainPraguePred.png>
-Package pdftex.def Info: figures/TerrainPraguePred.png used on input line 364.
+Package pdftex.def Info: figures/TerrainPraguePred.png used on input line 358.
 (pdftex.def)             Requested size: 180.0pt x 293.58635pt.
  [15 <./figures/TerrainPraguePred.png>]
 [16]
@@ -365,17 +376,17 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--420
+Underfull \hbox (badness 10000) in paragraph at lines 407--414
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--420
+Underfull \hbox (badness 10000) in paragraph at lines 407--414
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--420
+Underfull \hbox (badness 10000) in paragraph at lines 407--414
 
  []
 
@@ -383,15 +394,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 413--420
 File: figures/RidgeFranke.png Graphic file (type png)
 
 <use figures/RidgeFranke.png>
-Package pdftex.def Info: figures/RidgeFranke.png used on input line 434.
+Package pdftex.def Info: figures/RidgeFranke.png used on input line 431.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
 
 <figures/LassoFranke.png, id=91, 1445.4pt x 722.7pt>
 File: figures/LassoFranke.png Graphic file (type png)
 
 <use figures/LassoFranke.png>
-Package pdftex.def Info: figures/LassoFranke.png used on input line 441.
+Package pdftex.def Info: figures/LassoFranke.png used on input line 438.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
  [20 <./figures/RidgeFranke.png> <./figures/LassoFranke.png>] [21] (./text.aux)
 
 
@@ -399,13 +422,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3984 strings out of 493089
- 59442 string characters out of 6134843
- 123764 words of memory out of 5000000
- 7409 multiletter control sequences out of 15000+600000
+ 3987 strings out of 493089
+ 59481 string characters out of 6134843
+ 124773 words of memory out of 5000000
+ 7412 multiletter control sequences out of 15000+600000
  14122 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,10n,40p,783b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,40p,783b,271s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -418,7 +441,7 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on text.pdf (21 pages, 814008 bytes).
+Output written on text.pdf (21 pages, 816712 bytes).
 PDF statistics:
  139 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream

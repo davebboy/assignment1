@@ -4,14 +4,18 @@
 \citation{TRJ}
 \citation{def}
 \citation{def}
+\citation{abc}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Mathematical tools}{2}}
 \newlabel{sec:techniques}{{1}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Linear regression}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Simple Linear Regression - Ordinary Least Squares}{2}}
 \newlabel{eq:ols}{{2}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Regularization}{2}}
+\citation{TRJ}
+\citation{TRJ}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Regularization}{3}}
 \newlabel{eq:ridge}{{4}{3}}
 \newlabel{eq:lasso}{{6}{3}}
 \citation{TRJ}
+\citation{2018arXiv180308823M}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}K-folds cross-validation}{4}}
 \newlabel{sec_kcross}{{1.3}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Performance criteria}{4}}
@@ -19,60 +23,63 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Franke's function}{5}}
 \newlabel{sebsec:franke}{{2.1}{5}}
 \newlabel{eq:franke}{{12}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Three-dimensional plot of the Franke’s function with an added stochastic noise using the normal distribution N(0,1).\relax }}{6}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:Franke}{{1}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}OLS}{6}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces My caption\relax }}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}OLS on the Franke's function}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Confidence intervals of estimated coefficients of the OSL regression model\relax }}{7}}
 \newlabel{tab:olsfrane1}{{1}{7}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces My caption\relax }}{7}}
-\newlabel{tab:olsFranke}{{2}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{8}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces MSE and $R^{2}$ score of the OSL regression model for the Franke's function using polynomials of different orders.\relax }}{8}}
+\newlabel{tab:olsFranke}{{2}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Three-dimensional plot of the predicted values of the Franke’s function using the best OSL regression model.\relax }}{8}}
 \newlabel{fig:olsFranke}{{2}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Magnitudes of coefficients in the OLS model using polynomial approximation of order $5$.\relax }}{9}}
 \newlabel{fig:coeffOLS}{{3}{9}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Rigde regression on the Franke function with resampling}{9}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces order3\relax }}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Rigde regression on the Franke's function with resampling}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the Franke's function using polynomials of order $3$.\relax }}{10}}
 \newlabel{tab:ridge3}{{3}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces order 4\relax }}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the Franke's function using polynomials of order $4$.\relax }}{10}}
 \newlabel{tab:ridge4}{{4}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces order 5\relax }}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the Franke's function using polynomials of order $5$.\relax }}{10}}
 \newlabel{tab:ridge5}{{5}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Magnitudes of coefficients in the Ridge model using polynomial approximation of order $5$.\relax }}{11}}
 \newlabel{fig:coeffRidge}{{4}{11}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Lasso regression on the Franke function with resampling}{11}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces 3\relax }}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Lasso regression on the Franke's function with resampling}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces MSE and $R^{2}$ score of the Lasso regression model for the Franke's function using polynomials of order $3$.\relax }}{12}}
 \newlabel{tab:LassoFranke3}{{6}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces 4\relax }}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces {MSE and $R^{2}$ score of the Lasso regression model for the Franke's function using polynomials of order $4$.}\relax }}{12}}
 \newlabel{tab:LassoFranke4}{{7}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces 5\relax }}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces MSE and $R^{2}$ score of the Lasso regression model for the Franke's function using polynomials of order $5$.\relax }}{12}}
 \newlabel{tab:LassoFranke5}{{8}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Magnitudes of coefficients in the Lasso model using polynomial approximation of order $5$.\relax }}{13}}
 \newlabel{fig:coeffLasso}{{5}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Real data}{13}}
 \newlabel{sec:realdata}{{2.2}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $2D$ image of the digital terrain data from Prague in Czech Republic.\relax }}{14}}
 \newlabel{fig:TerrainPrague}{{6}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}OLS real data}{14}}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces My caption\relax }}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}OLS on the real data}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces MSE and $R^{2}$ score of the OSL regression model for the terrain data using polynomials of different orders.\relax }}{15}}
 \newlabel{tab:olsTerrain}{{9}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces $2D$ image of the predicted terrain data from Prague using OSL regression model with polynomial approximation of order $5$.\relax }}{15}}
 \newlabel{fig:TerrainPraguePred}{{7}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Ridge real data}{16}}
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces order5\relax }}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Ridge regression on the real data}{16}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the terrain data using polynomials of order $5$.\relax }}{16}}
 \newlabel{tab:ridge5Terrain}{{10}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Lasso real data}{16}}
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces order5\relax }}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Lasso regression on the real data}{16}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces MSE and $R^{2}$ score of the Lasso regression model for the terrain data using polynomials of order $5$.\relax }}{17}}
 \newlabel{tab:ridge5Terrain}{{11}{17}}
 \bibcite{abc}{1}
 \bibcite{def}{2}
 \bibcite{TRJ}{3}
+\bibcite{berkeley}{4}
+\bibcite{kfolds}{5}
+\bibcite{2018arXiv180308823M}{6}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Three-dimensional plot of the predicted values of the Franke’s function using the best Ridge regression model.\relax }}{20}}
 \newlabel{fig:RidgeFranke}{{8}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Average fitness of the best fit individual in each generation for $24$ cities using Baldwinian GA\relax }}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Three-dimensional plot of the predicted values of the Franke’s function using the best Lasso regression model.\relax }}{20}}
 \newlabel{fig:LassoFranke}{{9}{20}}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces real data order3\relax }}{21}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the terrain data using polynomials of order $3$.\relax }}{21}}
 \newlabel{tab:ridge3Terrain}{{12}{21}}
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces real data order4\relax }}{21}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces MSE and $R^{2}$ score of the Ridge regression model for the terrain data using polynomials of order $4$.\relax }}{21}}
 \newlabel{tab:ridge4Terrain}{{13}{21}}
